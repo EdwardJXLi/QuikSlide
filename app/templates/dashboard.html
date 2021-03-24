@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block content %}
+
+<div id="main" class="alt">
+  <section id="one">
+    <div class="inner">
+      <header class="major">
+        <h1>Dashboard</h1>
+      </header>
+
+      <div class="row">
+        {% for project in projects %}
+        <div class="col-4 col-12-small" style="padding-bottom: 2rem !important">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{project.name}}</h5>
+              <a href="{{ project.link }}" class="btn btn-outline-primary"
+                >View</a
+              >
+            </div>
+          </div>
+        </div>
+        {% endfor %} {% if projects|length != 0 %}
+        <div class="col-4 col-12-small" style="padding-bottom: 2rem !important">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Something new...</h5>
+              <a href="{{ url_for('create') }}" class="btn btn-outline-primary"
+                >Create a presentation</a
+              >
+            </div>
+          </div>
+        </div>
+        {% endif %} {% if projects|length == 0 %}
+        <p>
+          You have no projects yet. <a href="{{url_for('create')}}">Create</a> a
+          new one.
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock content %}

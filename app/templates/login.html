@@ -1,0 +1,69 @@
+{% extends "base.html" %} {% block content %}
+
+<div id="main" class="alt">
+  <section id="one">
+    <div class="inner">
+      <header class="major">
+        <h1>Login</h1>
+      </header>
+    </div>
+  </section>
+</div>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="inner">
+    <section>
+      <form method="post" action="{{ url_for('login') }}">
+        <div class="fields">
+          <div class="field">
+            <p class="error" style="color: red">{{ error }}</p>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" value="{{ email }}" />
+          </div>
+          <div class="field">
+            <label for="name">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value="{{ password }}"
+            />
+          </div>
+        </div>
+        <ul class="actions">
+          <li><input type="submit" value="Login" class="primary" /></li>
+          <li><input type="reset" value="Reset" /></li>
+        </ul>
+      </form>
+    </section>
+    <section class="split">
+      <section>
+        <div class="contact-method">
+          <span class="icon solid alt fa-envelope"></span>
+          <h3>Email</h3>
+          <a href="mailto:prezify.help@gmail.com">prezify.help@gmail.com</a>
+        </div>
+      </section>
+      <section>
+        <div class="contact-method">
+          <span class="icon solid alt fa-phone"></span>
+          <h3>Phone</h3>
+          <span>(613) 581-4953</span>
+        </div>
+      </section>
+      <section>
+        <div class="contact-method">
+          <span class="icon solid alt fa-home"></span>
+          <h3>Address</h3>
+          <span
+            >Address<br />
+            Address<br />
+            Canada</span
+          >
+        </div>
+      </section>
+    </section>
+  </div>
+</section>
+{% endblock content %}

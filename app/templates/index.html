@@ -1,0 +1,196 @@
+{% extends "base.html" %} {% block content %}
+
+<!-- Banner -->
+<section id="banner" class="major">
+  <div class="inner">
+    <header class="major">
+      <h1>QuikSlide</h1>
+    </header>
+    <div class="content">
+      <p>
+        An AI powered presentation generator<br />that helps you create visual
+        aids. Quikly.
+      </p>
+      <ul class="actions">
+        <li>
+          <a href="{{ url_for('create') }}" class="button next scrolly"
+            >Try it out</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Main -->
+<div id="main">
+  <!-- One -->
+  <section id="one" class="tiles">
+    <article>
+      <span class="image">
+        <img
+          src="{{ url_for('static', filename='images/pic01.jpg') }}"
+          alt=""
+        />
+      </span>
+      <header class="major">
+        <h3><a href="landing.html" class="link">Speech Processing</a></h3>
+        <p>
+          Our audial presentation generator uses high real-time speech
+          processing to recognize your speech, and translate it into text that
+          can be used for creation.
+        </p>
+      </header>
+    </article>
+    <article>
+      <span class="image">
+        <img
+          src="{{ url_for('static', filename='images/pic02.jpg') }}"
+          alt=""
+        />
+      </span>
+      <header class="major">
+        <h3><a href="landing.html" class="link">Natural Summarization</a></h3>
+        <p>
+          To make your visual aid as appealing, and effective as possible, our
+          product uses natural language APIs to logically categorize and
+          summarize your text, leaving no stone unturned.
+        </p>
+      </header>
+    </article>
+    <article>
+      <span class="image">
+        <img
+          src="{{ url_for('static', filename='images/pic03.jpg') }}"
+          alt=""
+        />
+      </span>
+      <header class="major">
+        <h3><a href="landing.html" class="link">Smart Asset Addition</a></h3>
+        <p>
+          A picture is worth a thousand words. Or at least that's what they tell
+          you. Our product ensures that your presentation remains engaging
+          through smart image selection, choosing relevant images from millions
+          to suit your use.
+        </p>
+      </header>
+    </article>
+    <article>
+      <span class="image">
+        <img
+          src="{{ url_for('static', filename='images/pic04.jpg') }}"
+          alt=""
+        />
+      </span>
+      <header class="major">
+        <h3><a href="landing.html" class="link">Keyword Extraction</a></h3>
+        <p>
+          To classify your slides (and title them!), QuikSlide employs a key
+          phrase extractor that autonomously chooses the most relevant phrases
+          from your text.
+        </p>
+      </header>
+    </article>
+    <article>
+      <span class="image">
+        <img
+          src="{{ url_for('static', filename='images/pic05.jpg') }}"
+          alt=""
+        />
+      </span>
+      <header class="major">
+        <h3>
+          <a href="landing.html" class="link">Efficient, Accessible Format</a>
+        </h3>
+        <p>
+          Who said making presentations had to be hard? Our web application does
+          all the work for you, leaving little work except recording your
+          powerful voice. Get going!
+        </p>
+      </header>
+    </article>
+  </section>
+
+  <!-- Two -->
+  <section id="two">
+    <div class="inner">
+      <header class="major">
+        <h2>Why QuikSlide?</h2>
+      </header>
+      <p>
+        Whether you’re preparing for a business meeting with your team, or
+        finishing off that last minute physics summative - visual aids are
+        essential in getting your point across. As designers, we know your
+        slideshow needs to be as appealing, effective, and concise to help your
+        project make a lasting impression. Our simplifies the creation of
+        professional slideshows, through our audial presentation maker. With the
+        use of automatic summarization and categorization, Prezify makes it easy
+        to create a presentation from scratch, in mere minutes.
+      </p>
+      <ul class="actions">
+        <li><a href="landing.html" class="button next">Get Started</a></li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="inner">
+    <section>
+      <form method="post" action="#">
+        <div class="fields">
+          <div class="field half">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" />
+          </div>
+          <div class="field half">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea name="message" id="message" rows="6"></textarea>
+          </div>
+        </div>
+        <ul class="actions">
+          <li><input type="submit" value="Send Message" class="primary" /></li>
+          <li><input type="reset" value="Clear" /></li>
+        </ul>
+      </form>
+    </section>
+    <section class="split">
+      <section>
+        <div class="contact-method">
+          <span class="icon solid alt fa-envelope"></span>
+          <h3>Email</h3>
+          <a href="#">prezify.help@gmail.com</a>
+        </div>
+      </section>
+      <section>
+        <div class="contact-method">
+          <span class="icon solid alt fa-phone"></span>
+          <h3>Phone</h3>
+          <span>(613) 581-4953 x----</span>
+        </div>
+      </section>
+     
+      <section>
+        <div class="contact-method">
+          <span class="icon solid alt fa-home"></span>
+          <h3>Address</h3>
+          <span
+            >Address<br />
+            Address<br />
+            <strong>Canada</strong></span
+          >
+        </div>
+      </section>
+    </section>
+          >
+        </div>
+      </section>
+    </section>
+  </div>
+</section>
+{% endblock content %}

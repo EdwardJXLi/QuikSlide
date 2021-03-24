@@ -1,0 +1,112 @@
+{% extends "base.html" %} {% block content %}
+
+<div id="main" class="alt">
+  <section id="one">
+    <div class="inner">
+      <header class="major">
+        <h1>Create</h1>
+      </header>
+    </div>
+  </section>
+</div>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="inner">
+    <section>
+      <form method="post" action="{{ url_for('create') }}" onsubmit="onSubmit()">
+        <div class="fields">
+          <div class="field">
+            <p class="error" style="color: red">{{ error }}</p>
+            <label for="title">Title</label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Leave blank to automatically generate"
+            /><br />
+            <label for="script">Script</label>
+            <textarea
+              name="script"
+              id="script"
+              placeholder="Paste your script or start speaking..."
+              rows="6"
+              required
+              minlength="128"
+            ></textarea>
+            <span id="test"></span>
+          </div>
+        </div>
+        <div class="loader" id="loaderElement" style="display: none;"></div>
+        <ul class="actions" id="actionElement" style="">
+          <li><input type="submit" value="Create" class="primary" /></li>
+          <li>
+            <button type="button" id="btn" onClick="toggleStartStop()">
+              Start Speaking
+            </button>
+          </li>
+          {% if link is defined %}
+          <li>
+            <a href="{{ link }}" class="btn btn-primary"
+              >View Presentation &rarr;</a
+            >
+          </li>
+          {% endif %}
+        </ul>
+      </form>
+      <script type="text/javascript">
+        var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+        var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+        var SpeechRecognitionEvent =
+          SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
+        var recognizing;
+        var recognition = new SpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        let btn = document.getElementById("btn");
+        let script = document.getElementById("script");
+        reset();
+        recognition.onend = reset;
+        let final_transcript = "";
+
+        recognition.onresult = function (event) {
+          let sp = document.getElementById("script");
+          var interim_transcript = "";
+          for (var i = event.resultIndex; i < event.results.length; ++i) {
+            if (event.results[i].isFinal) {
+              final_transcript += event.results[i][0].transcript;
+              final_transcript += ". ";
+              script.value += final_transcript;
+            } else {
+              interim_transcript += event.results[i][0].transcript;
+              sp.value = interim_transcript;
+            }
+          }
+          sp.value = final_transcript + interim_transcript;
+        };
+
+        function reset() {
+          recognizing = false;
+          btn.innerHTML = "Start Speaking";
+        }
+
+        function toggleStartStop() {
+          if (recognizing) {
+            recognition.stop();
+            reset();
+          } else {
+            recognition.start();
+            recognizing = true;
+            btn.innerHTML = "Stop Speaking";
+          }
+        }
+
+        function onSubmit() {
+          document.getElementById("loaderElement").style.display = "block";
+          document.getElementById("actionElement").style.display = "none";
+        }
+      </script>
+    </section>
+  </div>
+</section>
+{% endblock content %}
